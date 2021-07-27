@@ -9,8 +9,8 @@ test_case = int(input())
 results = []
 
 for i in range(test_case):
-    a, b = map(int, input().split())
-    results.append(factorial(b) // (factorial(a) * factorial(b - a)))
+    left_site, right_site = map(int, input().split())
+    results.append(factorial(right_site) // (factorial(left_site) * factorial(right_site - left_site)))
 
 for result in results:
     print(result)
