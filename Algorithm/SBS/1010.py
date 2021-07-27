@@ -5,10 +5,10 @@ def factorial(number):
     return factorial_result
 
 
-test_case = int(input())
+test_cases = int(input())
 results = []
 
-for i in range(test_case):
+for _ in range(test_cases):
     left_site, right_site = map(int, input().split())
     results.append(factorial(right_site) // (factorial(left_site) * factorial(right_site - left_site)))
 
