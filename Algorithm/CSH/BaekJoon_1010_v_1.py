@@ -3,33 +3,21 @@ def building_bridge():
     bridge_counts = []
     for _ in range(test_case_count):
         site_count = list(map(int, input().split()))
-        mul_M = 1
-        mul_N = 1
-        for M_site_num in range(site_count[1], site_count[1]-site_count[0], -1):
-            mul_M *= M_site_num
-        for N_site_num in range(1, site_count[0]+1):
-            mul_N *= N_site_num
-        bridge_counts.append(int(mul_M / mul_N))
-    for bridge_count in bridge_counts:
-        print(bridge_count)
+        a = factorial(site_count[1] - site_count[0] + 1)
+        b = factorial(site_count[1])
+        bridge_count = b / a
+        bridge_counts.append(bridge_count)
     return bridge_counts
 
-#building_bridge()
 
-from unittest.mock import patch
-import timeit
-
-def test_quitting():
-    try:
-        ans_right = [1, 5, 67863915]
-        with patch('builtins.input', side_effect=["3",
-                                                  "2 2",
-                                                  "1 5",
-                                                  "13 29"]):
-            assert building_bridge() == ans_right; print('Success')
-    except AssertionError:
-        print('Failed')
+def factorial(number):
+    factorial_result = 1
+    for n in range(1, number + 1):
+        factorial_result *= n
+    return factorial_result
 
 
-t = timeit.timeit('test_quitting()', setup='from __main__ import test_quitting', number=1)
-print(t)
+if __name__ == '__main__':
+    bridges = building_bridge()
+    for bridge in bridges:
+        print(bridge)
