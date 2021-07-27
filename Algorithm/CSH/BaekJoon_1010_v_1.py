@@ -3,9 +3,9 @@ def building_bridge():
     bridge_counts = []
     for _ in range(test_case_count):
         site_count = list(map(int, input().split()))
-        a = factorial(site_count[1] - site_count[0] + 1)
-        b = factorial(site_count[1])
-        bridge_count = b / a
+        a = factorial(site_count[0])
+        b = factorial(site_count[1]) / factorial(site_count[1] - site_count[0])
+        bridge_count = int(b / a)
         bridge_counts.append(bridge_count)
     return bridge_counts
 

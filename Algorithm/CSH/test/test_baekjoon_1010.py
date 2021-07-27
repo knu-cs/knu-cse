@@ -1,7 +1,7 @@
 import timeit
 from unittest.mock import patch
 
-from Algorithm.CSH.BaekJoon_1010_v_1 import building_bridge
+from CSH.BaekJoon_1010_v_1 import building_bridge
 
 
 def test_quitting():
