@@ -6,8 +6,8 @@ int main()
     int num_right_site, num_left_site;
     int num_test_case;
     int i;
-    printf("%d", Combination(2, 2));
     scanf("%d", &num_test_case);
+
     for(i = 0; i<num_test_case; i++){
         scanf("%d %d", &num_left_site, &num_right_site);
         printf("%d\n", Combination(num_right_site, num_left_site));
@@ -16,7 +16,7 @@ int main()
 
 int Combination(int n, int r)
 {
-    if(r==0)    
+    if(r==0)
         return 1;
     else if(n == r)
         return 1;
