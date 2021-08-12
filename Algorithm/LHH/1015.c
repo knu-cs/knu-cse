@@ -9,9 +9,13 @@ int main()
     int A[MAX_NUM];
     int i = 0;
     scanf("%d", &size_of_array);
+
+    
     for(i = 0; i< size_of_array; i++){
         scanf("%d", &A[i]);
     }
+
+
     ftemp(A, size_of_array);
     return 0;
 }
