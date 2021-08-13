@@ -1,19 +1,19 @@
 # BaekJoon 1012
 # 14:34 ~ 15:40
 
-def get_maximum_student(desc: list[list]) -> int:
+def get_maximum_student(desc):
     sum_student = 0
     for desc_row in desc:
         sum_student += desc_row.count("o")
     return sum_student
 
 
-def _print_desc(desc: list[list]) -> None:
+def _print_desc(desc):
     for desc_row in desc:
         print(desc_row)
 
 
-def check_cheating_possible(desc: list[list], check_matrix: list):
+def check_cheating_possible(desc, check_matrix):
     if desc[check_matrix[0]][check_matrix[1]] == "x":
         return
     try:
@@ -34,12 +34,14 @@ def check_cheating_possible(desc: list[list], check_matrix: list):
         left = ""
     if right_upper == "o" or right == "o" or left_upper == "o" or left == "o":
         pass
+    elif right_upper == "x" and right and "x" and left_upper and "x" and left == "x":
+        desc[check_matrix[0]][check_matrix[1]] = "o"
     else:
         desc[check_matrix[0]][check_matrix[1]] = "o"
     return desc
 
 
-def set_desk(row: int) -> list:
+def set_desk(row):
     desk_row = []
     for r in range(row):
         row_data = list(input())
@@ -47,17 +49,20 @@ def set_desk(row: int) -> list:
     return desk_row
 
 
-def main() -> None:
+def main():
     row, column = map(int, input().split())
     desc = set_desk(row)
     for r in range(row):
         for c in range(column):
             check_cheating_possible(desc, [r, c])
     answer = get_maximum_student(desc)
-    print(answer)
+    return answer
 
 
-if __name__ == "__main__":
-    test_cases = int(input())
-    for test_case in range(test_cases):
-        main()
+test_cases = int(input())
+answers = []
+for test_case in range(test_cases):
+    result = main()
+    answers.append(result)
+for a in answers:
+    print(a)
