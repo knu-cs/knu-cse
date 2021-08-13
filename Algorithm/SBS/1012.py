@@ -13,32 +13,41 @@ def _print_desc(desc):
         print(desc_row)
 
 
-def check_cheating_possible(desc, check_matrix):
-    if desc[check_matrix[0]][check_matrix[1]] == "x":
+def check_cheating_possible(desk, check_matrix):
+    if desk[check_matrix[0]][check_matrix[1]] == "x":
         return
     try:
-        right_upper = desc[check_matrix[0] - 1][check_matrix[1] + 1]
-    except IndexError as e:
+        right_upper = desk[check_matrix[0] - 1][check_matrix[1] + 1]
+    except:
         right_upper = ""
     try:
-        right = desc[check_matrix[0]][check_matrix[1] + 1]
-    except IndexError as e:
+        right = desk[check_matrix[0]][check_matrix[1] + 1]
+    except:
         right = ""
     try:
-        left_upper = desc[check_matrix[0] + 1][check_matrix[1] - 1]
-    except IndexError as e:
+        left_upper = desk[check_matrix[0] - 1][check_matrix[1] - 1]
+    except:
         left_upper = ""
     try:
-        left = desc[check_matrix[0]][check_matrix[1] - 1]
-    except IndexError as e:
+        left = desk[check_matrix[0]][check_matrix[1] - 1]
+    except:
         left = ""
+    if check_matrix[1] == 0:
+        left_upper = ""
+        left = ""
+    if check_matrix[0] == 0:
+        left_upper = ""
+        right_upper = ""
+    if check_matrix[1] == len(desk[0]) - 1:
+        right_upper = ""
+        right = ""
     if right_upper == "o" or right == "o" or left_upper == "o" or left == "o":
         pass
     elif right_upper == "x" and right and "x" and left_upper and "x" and left == "x":
-        desc[check_matrix[0]][check_matrix[1]] = "o"
+        desk[check_matrix[0]][check_matrix[1]] = "o"
     else:
-        desc[check_matrix[0]][check_matrix[1]] = "o"
-    return desc
+        desk[check_matrix[0]][check_matrix[1]] = "o"
+    return desk
 
 
 def set_desk(row):
